@@ -77,7 +77,7 @@
 -(void)setTopic:(FJTopic *)topic{
     _topic = topic;
     
-    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
+    [self.profileImageView fj_setHeader:topic.profile_image];
     
     self.nameLabel.text = topic.name;
     self.passtimeLabel.text = topic.passtime;

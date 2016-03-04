@@ -35,4 +35,13 @@
     */
 }
 
+- (void)fj_setHeader:(NSString *)url{
+    
+    UIImage *placeHolder = [UIImage fj_circleImageNamed:@"defaultUserIcon"];
+    [self sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:placeHolder completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        if (image == nil) return ;
+        self.image = [image fj_circleImage];
+    }];
+}
+
 @end

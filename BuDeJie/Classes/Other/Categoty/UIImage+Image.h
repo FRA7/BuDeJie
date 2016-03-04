@@ -18,4 +18,9 @@
  */
 + (UIImage *)imageNameWithOriginalMode:(NSString *)imageName;
 
++(instancetype)fj_circleImageNamed:(NSString *)name;
+
+-(instancetype)fj_circleImage;
+
+
 @end

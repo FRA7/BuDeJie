@@ -12,4 +12,6 @@
 
 -(void)fj_setLargeImageImageUrl:(NSString *)largeImageUrl smallImageUrl:(NSString *)smallImageUrl placeHolder:(UIImage *)placeHolder;
 
+- (void)fj_setHeader:(NSString *)url;
+
 @end

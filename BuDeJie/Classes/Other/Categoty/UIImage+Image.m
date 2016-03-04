@@ -18,5 +18,27 @@
     return [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 }
 
++(instancetype)fj_circleImageNamed:(NSString *)name{
+    
+    return [[self imageNamed:name] fj_circleImage];
+}
+
+-(instancetype)fj_circleImage{
+    
+    //1.开启图片上下文
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, 0);
+    //2.描述剪裁区域
+    UIBezierPath *clipPath = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, self.size.width, self.size.height)];
+    //3.设置剪裁区域
+    [clipPath addClip];
+    //4.绘制图片
+    [self drawAtPoint:CGPointZero];
+    //5.从上下文中取出图片
+    UIImage *circleImage = UIGraphicsGetImageFromCurrentImageContext();
+    //6.关闭上下文
+    UIGraphicsEndImageContext();
+    
+    return circleImage;
+}
 
 @end

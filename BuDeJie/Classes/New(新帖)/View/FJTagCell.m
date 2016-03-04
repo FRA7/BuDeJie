@@ -30,6 +30,9 @@
     _tagItem = tagItem;
     
     //显示头像,设置占位图片
+    [_iconImageView fj_setHeader:tagItem.image_list]; //使用封装框架
+    /*
+    
     [_iconImageView sd_setImageWithURL:[NSURL URLWithString:tagItem.image_list] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
         //剪裁图片生成一张新的图片
@@ -53,7 +56,7 @@
 //        _iconImageView.image = [image imageAntialias];
         
     }];
-    
+    */
     _nameLabel.text = tagItem.theme_name;
     
     //设置订阅数字
