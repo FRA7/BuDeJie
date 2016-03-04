@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FJTopicViewController.h"
 
-@interface FJVoiceTableViewController : UITableViewController
+@interface FJVoiceTableViewController : FJTopicViewController
 
 @end

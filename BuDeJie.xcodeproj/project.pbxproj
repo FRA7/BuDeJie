@@ -57,6 +57,7 @@
 		15845F291C7B273300839227 /* FJWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15845F271C7B273300839227 /* FJWebViewController.xib */; };
 		158655B21C81C26C00A27C35 /* GlobalConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 158655B11C81C26C00A27C35 /* GlobalConst.m */; };
 		15895A321C831BB30081B175 /* FJTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 15895A311C831BB30081B175 /* FJTopic.m */; };
+		15B5F3FA1C89B33300683261 /* FJTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B5F3F91C89B33300683261 /* FJTopicViewController.m */; };
 		15BB0AD71C76B5C600D8538C /* FJTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 15BB0AD61C76B5C600D8538C /* FJTabBar.m */; };
 		15BB0ADA1C76B9C800D8538C /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 15BB0AD91C76B9C800D8538C /* UIView+Frame.m */; };
 		15BB0AE31C76C71A00D8538C /* FJADViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15BB0AE11C76C71A00D8538C /* FJADViewController.m */; };
@@ -165,6 +166,8 @@
 		158655B11C81C26C00A27C35 /* GlobalConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalConst.m; sourceTree = "<group>"; };
 		15895A301C831BB30081B175 /* FJTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJTopic.h; sourceTree = "<group>"; };
 		15895A311C831BB30081B175 /* FJTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJTopic.m; sourceTree = "<group>"; };
+		15B5F3F81C89B33300683261 /* FJTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJTopicViewController.h; sourceTree = "<group>"; };
+		15B5F3F91C89B33300683261 /* FJTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJTopicViewController.m; sourceTree = "<group>"; };
 		15BB0AD51C76B5C600D8538C /* FJTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJTabBar.h; sourceTree = "<group>"; };
 		15BB0AD61C76B5C600D8538C /* FJTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJTabBar.m; sourceTree = "<group>"; };
 		15BB0AD81C76B9C800D8538C /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
@@ -302,6 +305,8 @@
 				15FFEE781C7F1FBF00FFEC8B /* FJPictureTableViewController.m */,
 				15FFEE741C7F1FAE00FFEC8B /* FJWordTableViewController.h */,
 				15FFEE751C7F1FAE00FFEC8B /* FJWordTableViewController.m */,
+				15B5F3F81C89B33300683261 /* FJTopicViewController.h */,
+				15B5F3F91C89B33300683261 /* FJTopicViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -848,6 +853,7 @@
 				152AD65F1C86B8040056FB70 /* UIView+Xib.m in Sources */,
 				15FFEE6A1C7F084B00FFEC8B /* FJTitleButton.m in Sources */,
 				15308CAC1C75EC440010CA99 /* UIBarButtonItem+Item.m in Sources */,
+				15B5F3FA1C89B33300683261 /* FJTopicViewController.m in Sources */,
 				15308C681C7599430010CA99 /* AppDelegate.m in Sources */,
 				15845F281C7B273300839227 /* FJWebViewController.m in Sources */,
 				15FFEE6D1C7F1ED500FFEC8B /* FJVideoTableViewController.m in Sources */,
