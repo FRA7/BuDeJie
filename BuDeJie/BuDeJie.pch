@@ -1,0 +1,62 @@
+//
+//  BuDeJie.pch
+//  BuDeJie
+//
+//  Created by Francis on 16/2/19.
+//  Copyright © 2016年 FRAJ. All rights reserved.
+//
+
+
+
+
+#ifdef __OBJC__
+
+#import "UIView+Frame.h"
+
+#import "UIImage+Image.h"
+
+#import "UIBarButtonItem+Item.h"
+
+#import "UITextField+Placeholder.h"
+
+#import "GlobalConst.h"
+
+#import "UIView+Xib.h"
+
+#import "UIImageView+Download.h"
+
+
+#ifdef DEBUG
+
+#define FJLog(...) NSLog(__VA_ARGS__)
+
+#else
+
+#define FJLog(...)
+
+#endif
+
+
+#define FJFunc FJLog(@"%s",__func__);
+
+
+//设置屏幕
+#define FJScreenW [UIScreen mainScreen].bounds.size.width
+#define FJScreenH [UIScreen mainScreen].bounds.size.height
+
+#define iPhone6P (FJScreenH == 736)
+#define iPhone6 (FJScreenH == 667)
+#define iPhone5 (FJScreenH == 568)
+#define iPhone4 (FJScreenH == 480)
+
+
+//随机颜色
+#define FJRandomColor FJColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
+
+#define FJColor(r, g, b) \
+[UIColor colorWithRed:(r) / 255.0f \
+green:(g) / 255.0f \
+blue:(b) / 255.0f \
+alpha:1]
+
+#endif

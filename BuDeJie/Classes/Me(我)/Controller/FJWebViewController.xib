@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FJWebViewController">
+            <connections>
+                <outlet property="backButton" destination="jJD-hH-73k" id="xVf-fX-fH9"/>
+                <outlet property="contentView" destination="voT-tM-Kkd" id="WUi-fT-LX5"/>
+                <outlet property="forwardButton" destination="3Ew-RU-CQ5" id="d8n-Nd-7fh"/>
+                <outlet property="progressVeiw" destination="A0u-eP-nTd" id="sVF-iD-7cc"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="voT-tM-Kkd" userLabel="contentView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A0u-eP-nTd">
+                    <rect key="frame" x="0.0" y="64" width="600" height="2"/>
+                    <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </progressView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vyL-8H-4vo">
+                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="L0R-xJ-2qr"/>
+                    </constraints>
+                    <items>
+                        <barButtonItem image="toolbar_left_icon" id="jJD-hH-73k">
+                            <connections>
+                                <action selector="goBackButtonClick:" destination="-1" id="Gkg-2S-rU6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="toolbar_right_icon" id="3Ew-RU-CQ5">
+                            <connections>
+                                <action selector="goForwardButtonClick:" destination="-1" id="9YJ-qT-3FH"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Tu1-bE-l2g"/>
+                        <barButtonItem systemItem="refresh" id="HTe-T4-gUX">
+                            <connections>
+                                <action selector="refreshButtonClick:" destination="-1" id="3V0-zF-kMW"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="voT-tM-Kkd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4N1-F7-mBQ"/>
+                <constraint firstItem="vyL-8H-4vo" firstAttribute="top" secondItem="voT-tM-Kkd" secondAttribute="bottom" id="6WF-nJ-mIF"/>
+                <constraint firstAttribute="trailing" secondItem="vyL-8H-4vo" secondAttribute="trailing" id="9nN-hZ-6Au"/>
+                <constraint firstAttribute="bottom" secondItem="vyL-8H-4vo" secondAttribute="bottom" id="BxF-3Z-To4"/>
+                <constraint firstItem="vyL-8H-4vo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YQz-r8-aqu"/>
+                <constraint firstItem="voT-tM-Kkd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="h1j-cr-QBv"/>
+                <constraint firstAttribute="trailing" secondItem="voT-tM-Kkd" secondAttribute="trailing" id="mwk-qc-Npq"/>
+                <constraint firstItem="A0u-eP-nTd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pVe-wy-28v"/>
+                <constraint firstItem="A0u-eP-nTd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="v0b-gO-t59"/>
+                <constraint firstAttribute="trailing" secondItem="A0u-eP-nTd" secondAttribute="trailing" id="zF4-2h-LAS"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="toolbar_left_icon" width="25" height="33"/>
+        <image name="toolbar_right_icon" width="25" height="33"/>
+    </resources>
+</document>
