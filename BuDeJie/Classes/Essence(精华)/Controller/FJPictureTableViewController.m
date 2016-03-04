@@ -18,4 +18,9 @@
     
   }
 
+-(FJTopicType)type{
+    
+    return FJTopicTypePicture;
+}
+
 @end

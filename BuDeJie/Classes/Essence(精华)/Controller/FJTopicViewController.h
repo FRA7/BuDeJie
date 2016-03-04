@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FJTopic.h"
 
 @interface FJTopicViewController : UITableViewController
+
+- (FJTopicType)type;
 
 @end

@@ -17,5 +17,8 @@
     
     
 }
-
+-(FJTopicType)type{
+    
+    return FJTopicTypeVoice;
+}
 @end

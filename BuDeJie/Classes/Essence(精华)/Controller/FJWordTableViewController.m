@@ -16,4 +16,9 @@
     
   }
 
+-(FJTopicType)type{
+    
+    return FJTopicTypeWord;
+}
+
 @end

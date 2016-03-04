@@ -51,16 +51,16 @@
 #pragma mark - 设置子控制器
 -(void)setUpChildViewController{
     
-    FJAllTableViewController *allVC = [[FJAllTableViewController alloc] init];
-    [self addChildViewController:allVC];
-    FJVideoTableViewController *videoVC = [[FJVideoTableViewController alloc] init];
-    [self addChildViewController:videoVC];
-    FJVoiceTableViewController *voiceVC = [[FJVoiceTableViewController alloc] init];
-    [self addChildViewController:voiceVC];
-    FJPictureTableViewController *pictureVC = [[FJPictureTableViewController alloc] init];
-    [self addChildViewController:pictureVC];
-    FJWordTableViewController *wordVC = [[FJWordTableViewController alloc] init];
-    [self addChildViewController:wordVC];
+
+    [self addChildViewController:[[FJAllTableViewController alloc] init]];
+
+    [self addChildViewController:[[FJVideoTableViewController alloc] init]];
+
+    [self addChildViewController:[[FJVoiceTableViewController alloc] init]];
+
+    [self addChildViewController:[[FJPictureTableViewController alloc] init]];
+
+    [self addChildViewController:[[FJWordTableViewController alloc] init]];
     
 }
 

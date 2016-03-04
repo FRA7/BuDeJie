@@ -15,8 +15,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-   
-}
 
+}
+-(FJTopicType)type{
+    
+    return FJTopicTypeVideo;
+}
 @end

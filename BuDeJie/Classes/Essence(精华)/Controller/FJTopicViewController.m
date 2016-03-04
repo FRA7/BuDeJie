@@ -40,7 +40,7 @@
 /** 刷新状态*/
 @property (nonatomic ,assign,getter=isHeaderRefreshing) BOOL headerRefreshing;
 
--(FJTopicType)type;
+
 
 @end
 
@@ -59,12 +59,7 @@ static NSString * const FJTopicCellID = @"FJTopicCellID";
 //加载数据
 -(FJTopicType)type{
     
-    if ([@"FJAllTableViewController" isEqualToString:NSStringFromClass(self.class)]) return FJTopicTypeAll;
-    if ([@"FJVideoTableViewController" isEqualToString:NSStringFromClass(self.class)]) return FJTopicTypeVideo;
-    if ([@"FJVoiceTableViewController" isEqualToString:NSStringFromClass(self.class)]) return FJTopicTypeVoice;
-    if ([@"FJPictureTableViewController" isEqualToString:NSStringFromClass(self.class)]) return FJTopicTypePicture;
-    if ([@"FJWordTableViewController" isEqualToString:NSStringFromClass(self.class)]) return FJTopicTypeWord;
-    
+   //具体返回什么由子类决定
     return 0;
 }
 
@@ -97,12 +92,14 @@ static NSString * const FJTopicCellID = @"FJTopicCellID";
 
 -(void)setUpRefresh{
     
+    /*
     //广告条
     UILabel *adLabel = [[UILabel alloc] init];
     adLabel.frame = CGRectMake(0, 0, self.tableView.width, 25);
     adLabel.text =@"广告条";
     adLabel.backgroundColor = [UIColor blueColor];
     self.tableView.tableHeaderView = adLabel;
+     */
     
     //header下拉刷新
     UIView *header = [[UIView alloc] init];

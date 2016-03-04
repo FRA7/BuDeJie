@@ -10,4 +10,13 @@
 
 @implementation FJAllTableViewController
 
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+}
+-(FJTopicType)type{
+    
+    return FJTopicTypeAll;
+}
 @end
