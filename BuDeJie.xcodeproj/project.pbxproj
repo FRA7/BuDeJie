@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1502D00C1C8C411000A4D375 /* FJSeeBigPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1502D00A1C8C411000A4D375 /* FJSeeBigPictureViewController.m */; };
+		1502D00D1C8C411000A4D375 /* FJSeeBigPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1502D00B1C8C411000A4D375 /* FJSeeBigPictureViewController.xib */; };
 		150ABD3B1C84240500855E09 /* FJTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 150ABD3A1C84240500855E09 /* FJTopicCell.m */; };
 		150ABD4B1C8430C400855E09 /* FJTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150ABD4A1C8430C400855E09 /* FJTopicCell.xib */; };
 		15136E821C784FB9003CC6A6 /* FJFriendTrendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15136E811C784FB9003CC6A6 /* FJFriendTrendViewController.xib */; };
@@ -80,6 +82,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1502D0091C8C411000A4D375 /* FJSeeBigPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJSeeBigPictureViewController.h; sourceTree = "<group>"; };
+		1502D00A1C8C411000A4D375 /* FJSeeBigPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJSeeBigPictureViewController.m; sourceTree = "<group>"; };
+		1502D00B1C8C411000A4D375 /* FJSeeBigPictureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJSeeBigPictureViewController.xib; sourceTree = "<group>"; };
 		150ABD391C84240500855E09 /* FJTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJTopicCell.h; sourceTree = "<group>"; };
 		150ABD3A1C84240500855E09 /* FJTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJTopicCell.m; sourceTree = "<group>"; };
 		150ABD4A1C8430C400855E09 /* FJTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FJTopicCell.xib; sourceTree = "<group>"; };
@@ -337,6 +342,9 @@
 				152AD64F1C86B5820056FB70 /* FJTopicVoiceView.h */,
 				152AD6501C86B5820056FB70 /* FJTopicVoiceView.m */,
 				156C51241C885F1D00B5DB48 /* FJTopicVoiceView.xib */,
+				1502D0091C8C411000A4D375 /* FJSeeBigPictureViewController.h */,
+				1502D00A1C8C411000A4D375 /* FJSeeBigPictureViewController.m */,
+				1502D00B1C8C411000A4D375 /* FJSeeBigPictureViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -742,6 +750,7 @@
 				15136E8C1C78639F003CC6A6 /* FJLoginRegisterView.xib in Resources */,
 				15308C731C7599430010CA99 /* LaunchScreen.storyboard in Resources */,
 				152AD6561C86B5AE0056FB70 /* FJTopicPictureView.xib in Resources */,
+				1502D00D1C8C411000A4D375 /* FJSeeBigPictureViewController.xib in Resources */,
 				15BB0AF11C7709F100D8538C /* LaunchImage-800-Portrait-736h@3x.png in Resources */,
 				15308C701C7599430010CA99 /* Assets.xcassets in Resources */,
 				15845F291C7B273300839227 /* FJWebViewController.xib in Resources */,
@@ -851,6 +860,7 @@
 				15308CAF1C760F090010CA99 /* FJNavigationController.m in Sources */,
 				151D83C61C7BE9A600C93F6B /* FJCacheManager.m in Sources */,
 				152AD65F1C86B8040056FB70 /* UIView+Xib.m in Sources */,
+				1502D00C1C8C411000A4D375 /* FJSeeBigPictureViewController.m in Sources */,
 				15FFEE6A1C7F084B00FFEC8B /* FJTitleButton.m in Sources */,
 				15308CAC1C75EC440010CA99 /* UIBarButtonItem+Item.m in Sources */,
 				15B5F3FA1C89B33300683261 /* FJTopicViewController.m in Sources */,

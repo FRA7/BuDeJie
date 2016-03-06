@@ -9,6 +9,7 @@
 #import "FJTopicVoiceView.h"
 #import "FJTopic.h"
 #import <UIImageView+WebCache.h>
+#import "FJSeeBigPictureViewController.h"
 
 @interface FJTopicVoiceView()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -17,6 +18,19 @@
 @end
 @implementation FJTopicVoiceView
 
+
+-(void)awakeFromNib{
+    self.imageView.userInteractionEnabled = YES;
+    [self.imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seeBigPicture)]];
+}
+
+-(void)seeBigPicture{
+    
+    FJSeeBigPictureViewController *vc = [[FJSeeBigPictureViewController alloc] init];
+    vc.topic = self.topic;
+    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [rootVC presentViewController:vc animated:YES completion:nil];
+}
 -(void)setTopic:(FJTopic *)topic{
     _topic = topic;
     

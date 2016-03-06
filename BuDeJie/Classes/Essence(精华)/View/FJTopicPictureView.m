@@ -9,7 +9,7 @@
 #import "FJTopicPictureView.h"
 #import "FJTopic.h"
 #import <UIImageView+WebCache.h>
-
+#import "FJSeeBigPictureViewController.h"
 @interface FJTopicPictureView()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *gifView;
@@ -18,6 +18,21 @@
 @end
 
 @implementation FJTopicPictureView
+
+
+-(void)awakeFromNib{
+    self.imageView.userInteractionEnabled = YES;
+    [self.imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seeBigPicture)]];
+}
+
+-(void)seeBigPicture{
+    
+    FJSeeBigPictureViewController *vc = [[FJSeeBigPictureViewController alloc] init];
+    vc.topic = self.topic;
+    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [rootVC presentViewController:vc animated:YES completion:nil];
+}
+
 
 -(void)setTopic:(FJTopic *)topic{
     _topic = topic;
