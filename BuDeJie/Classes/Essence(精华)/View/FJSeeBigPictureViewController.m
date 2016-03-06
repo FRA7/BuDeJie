@@ -10,6 +10,7 @@
 #import "FJTopic.h"
 #import <UIImageView+WebCache.h>
 #import <SVProgressHUD.h>
+#import <Photos/Photos.h>
 
 @interface FJSeeBigPictureViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
@@ -64,21 +65,56 @@
     
 }
 - (IBAction)save{
-    FJFunc
-    //将图片保存到[相机胶卷]
-    UIImageWriteToSavedPhotosAlbum(self.imageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+
+    PHAuthorizationStatus oldStatus = [PHPhotoLibrary authorizationStatus];
+    //判断当前的授权状态
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+        switch (status) {
+           
+            // 这是系统级别的限制（比如家长控制），用户也无法修改这个授权状态
+            case PHAuthorizationStatusRestricted:{
+                [SVProgressHUD showErrorWithStatus:@"使用权限如家长控制原因,无法保存图片"];
+                break;
+            }
+            // 用户已经拒绝当前App访问相片数据（说明用户当初选择了“Don't Allow”）
+            case PHAuthorizationStatusDenied:{
+                if (oldStatus != PHAuthorizationStatusNotDetermined) {
+                    NSLog(@"提醒用户打开访问权限开关");
+                }
+                break;
+            }
+            // 用户已经允许当前App访问相片数据（说明用户当初选择了“OK”）
+            case PHAuthorizationStatusAuthorized:{
+                [self saveImage];
+                break;
+            }
+                
+            default:
+                break;
+        }
+    }];
+
+    
 }
 
-
-- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+-(void)saveImage{
     
-    if (error) {
-        [SVProgressHUD showErrorWithStatus:@"保存失败"];
-    }else{
-        [SVProgressHUD showSuccessWithStatus:@"保存成功"];
-    }
+    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+        // 保存图片到【相机胶卷】 - 添加一个新的PHAsset对象
+        [PHAssetChangeRequest creationRequestForAssetFromImage:self.imageView.image];
+        
+        // 从Info.plist中获得App名称
+        NSString *title = [NSBundle mainBundle].infoDictionary[(NSString *)kCFBundleNameKey];
+        // 拥有一个【自定义相册】
+        [PHAssetCollectionChangeRequest creationRequestForAssetCollectionWithTitle:title];
+    
+    } completionHandler:^(BOOL success, NSError * _Nullable error) {
+        
+        NSLog(@"%zd",success);
+    }];
     
 }
+
 - (IBAction)back{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
