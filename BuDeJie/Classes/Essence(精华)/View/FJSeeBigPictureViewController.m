@@ -10,8 +10,10 @@
 #import "FJTopic.h"
 #import <UIImageView+WebCache.h>
 
-@interface FJSeeBigPictureViewController ()
+@interface FJSeeBigPictureViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
+/** <#注释#>*/
+@property (nonatomic ,weak) UIImageView *imageView;
 
 
 @end
@@ -49,7 +51,15 @@
     }];
     
     [scrollView addSubview:imageView];
+    self.imageView = imageView;
     
+    //缩放
+    CGFloat maxScale = self.topic.width / imageW;
+    if (maxScale > 1.0) {
+        scrollView.maximumZoomScale = maxScale;
+        scrollView.delegate = self;
+
+    }
     
 }
 - (IBAction)save{
@@ -59,5 +69,11 @@
 - (IBAction)back{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - UIScrollViewDelegate
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
+    return self.imageView;
+}
+
 
 @end
