@@ -9,6 +9,7 @@
 #import "FJSeeBigPictureViewController.h"
 #import "FJTopic.h"
 #import <UIImageView+WebCache.h>
+#import <SVProgressHUD.h>
 
 @interface FJSeeBigPictureViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
@@ -64,8 +65,20 @@
 }
 - (IBAction)save{
     FJFunc
+    //将图片保存到[相机胶卷]
+    UIImageWriteToSavedPhotosAlbum(self.imageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
 }
 
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+    
+    if (error) {
+        [SVProgressHUD showErrorWithStatus:@"保存失败"];
+    }else{
+        [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+    }
+    
+}
 - (IBAction)back{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
