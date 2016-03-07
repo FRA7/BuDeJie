@@ -14,7 +14,7 @@
 
 @interface FJSeeBigPictureViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
-/** <#注释#>*/
+
 @property (nonatomic ,weak) UIImageView *imageView;
 
 
@@ -67,24 +67,26 @@
 - (IBAction)save{
 
     PHAuthorizationStatus oldStatus = [PHPhotoLibrary authorizationStatus];
-    //判断当前的授权状态
+    
+    // 判断当前的授权状态
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
         switch (status) {
-           
-            // 这是系统级别的限制（比如家长控制），用户也无法修改这个授权状态
-            case PHAuthorizationStatusRestricted:{
-                [SVProgressHUD showErrorWithStatus:@"使用权限如家长控制原因,无法保存图片"];
+                // 这是系统级别的限制（比如家长控制），用户也无法修改这个授权状态
+            case PHAuthorizationStatusRestricted: {
+                [SVProgressHUD showErrorWithStatus:@"由于系统原因，无法保存图片！"];
                 break;
             }
-            // 用户已经拒绝当前App访问相片数据（说明用户当初选择了“Don't Allow”）
-            case PHAuthorizationStatusDenied:{
+                
+                // 用户已经拒绝当前App访问相片数据（说明用户当初选择了“Don't Allow”）
+            case PHAuthorizationStatusDenied: {
                 if (oldStatus != PHAuthorizationStatusNotDetermined) {
-                    NSLog(@"提醒用户打开访问权限开关");
+                    NSLog(@"提醒用户去打开访问开关");
                 }
                 break;
             }
-            // 用户已经允许当前App访问相片数据（说明用户当初选择了“OK”）
-            case PHAuthorizationStatusAuthorized:{
+                
+                // 用户已经允许当前App访问相片数据（说明用户当初选择了“OK”）
+            case PHAuthorizationStatusAuthorized: {
                 [self saveImage];
                 break;
             }
@@ -97,22 +99,53 @@
     
 }
 
+-(PHAssetCollection *)createdCollection{
+        // 抓取所有【自定义相册】
+    PHFetchResult<PHAssetCollection *> *collections = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
+    // 从Info.plist中获得App名称(也就是当前App的相册名称)
+    NSString *title = [NSBundle mainBundle].infoDictionary[(NSString *)kCFBundleNameKey];
+    for (PHAssetCollection *collection in collections) {
+        if ([collection.localizedTitle isEqualToString:title]) {
+            // 【自定义相册】已经创建过
+            return collection;
+        }
+    }
+    
+    __block NSString *collectionId = nil;
+    [[PHPhotoLibrary sharedPhotoLibrary] performChangesAndWait:^{
+        // 创建【自定义相册】
+        collectionId = [PHAssetCollectionChangeRequest creationRequestForAssetCollectionWithTitle:title].placeholderForCreatedAssetCollection.localIdentifier;
+    } error:nil];
+    
+    // 根据id获得刚刚创建完的相册
+    return [PHAssetCollection fetchAssetCollectionsWithLocalIdentifiers:@[collectionId] options:nil].firstObject;
+}
+
 -(void)saveImage{
+      PHAssetCollection *createdCollection = self.createdCollection;
     
     [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-        // 保存图片到【相机胶卷】 - 添加一个新的PHAsset对象
-        [PHAssetChangeRequest creationRequestForAssetFromImage:self.imageView.image];
+        // 保存图片到【相机胶卷】
+        // createdAsset 就代表 刚才添加到【相机胶卷】中的图片
+        PHObjectPlaceholder *createdAsset = [PHAssetChangeRequest creationRequestForAssetFromImage:self.imageView.image].placeholderForCreatedAsset;
         
-        // 从Info.plist中获得App名称
-        NSString *title = [NSBundle mainBundle].infoDictionary[(NSString *)kCFBundleNameKey];
-        // 拥有一个【自定义相册】
-        [PHAssetCollectionChangeRequest creationRequestForAssetCollectionWithTitle:title];
-    
-    } completionHandler:^(BOOL success, NSError * _Nullable error) {
+        // 将对应的相册传入，创建一个【相册修改请求】对象
+        PHAssetCollectionChangeRequest *collectionChangeRequest = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:createdCollection];
         
-        NSLog(@"%zd",success);
+        // 将保存到【相机胶卷】的图片添加到【自定义相册】
+        [collectionChangeRequest insertAssets:@[createdAsset] atIndexes:[NSIndexSet indexSetWithIndex:0]];
+    } completionHandler:^(BOOL success, NSError *error) {
+        NSLog(@"%@",[NSThread currentThread]);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // 更UI
+            if (success) {
+                [SVProgressHUD showSuccessWithStatus:@"保存成功！"];
+            } else {
+                [SVProgressHUD showErrorWithStatus:@"保存失败！"];
+            }
+        });
     }];
-    
+
 }
 
 - (IBAction)back{
