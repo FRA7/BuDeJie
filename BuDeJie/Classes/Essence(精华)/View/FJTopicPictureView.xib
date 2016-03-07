@@ -33,6 +33,9 @@
                         <constraint firstAttribute="height" constant="43" id="SeL-kD-p3X"/>
                     </constraints>
                     <state key="normal" title=" 点击查看大图" image="see-big-picture" backgroundImage="see-big-picture-background"/>
+                    <connections>
+                        <action selector="seeBigPicture" destination="iN0-l3-epB" eventType="touchUpInside" id="8k5-LB-Pfh"/>
+                    </connections>
                 </button>
             </subviews>
             <constraints>

@@ -10,6 +10,8 @@
 #import "FJTopic.h"
 #import <UIImageView+WebCache.h>
 #import "FJSeeBigPictureViewController.h"
+#import <AVFoundation/AVFoundation.h>
+#import <AVKit/AVKit.h>
 
 @interface FJTopicVoiceView()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -21,15 +23,19 @@
 
 -(void)awakeFromNib{
     self.imageView.userInteractionEnabled = YES;
-    [self.imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seeBigPicture)]];
+    [self.imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(voicePlay)]];
 }
 
--(void)seeBigPicture{
+
+- (IBAction)voicePlay {
     
-    FJSeeBigPictureViewController *vc = [[FJSeeBigPictureViewController alloc] init];
-    vc.topic = self.topic;
+    AVPlayerViewController *avC = [[AVPlayerViewController alloc] init];
+    AVPlayer *player = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:self.topic.voiceuri]];
+    avC.player = player;
+    
     UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
-    [rootVC presentViewController:vc animated:YES completion:nil];
+    [rootVC presentViewController:avC animated:YES completion:nil];
+    
 }
 -(void)setTopic:(FJTopic *)topic{
     _topic = topic;

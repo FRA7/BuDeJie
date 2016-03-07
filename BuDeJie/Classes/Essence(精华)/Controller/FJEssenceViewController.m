@@ -149,7 +149,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     UIScrollView *scrollV = [[UIScrollView alloc] init];
-//    scrollV.backgroundColor = [UIColor blueColor];
+    scrollV.backgroundColor = [UIColor whiteColor];
     self.scrollView = scrollV;
     
     

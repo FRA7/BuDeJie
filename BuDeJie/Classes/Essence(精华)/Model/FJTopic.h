@@ -61,6 +61,11 @@ typedef NS_ENUM(NSInteger,FJTopicType) {
 @property (nonatomic ,assign) BOOL is_gif;
 /** 最热评论*/
 @property (nonatomic ,strong) NSArray *top_cmt;
+/** 视频*/
+@property (nonatomic ,copy)NSString *videouri;
+/** 音频*/
+@property (nonatomic ,copy)NSString *voiceuri;
+
 
 //额外增加的属性
 /** 根据当前cell类型计算出的cell高度*/

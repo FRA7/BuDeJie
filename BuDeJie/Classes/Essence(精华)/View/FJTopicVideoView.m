@@ -9,6 +9,8 @@
 #import "FJTopicVideoView.h"
 #import "FJTopic.h"
 #import <UIImageView+WebCache.h>
+#import <AVKit/AVKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface FJTopicVideoView()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -37,5 +39,20 @@
     self.videotimeLabel.text = [NSString stringWithFormat:@"%02zd:%02zd",minutes,seconds];
     
 }
+-(void)awakeFromNib{
+    self.imageView.userInteractionEnabled = YES;
+    [self.imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(videoPlay)]];
+}
 
+
+- (IBAction)videoPlay {
+    
+    AVPlayerViewController *avC = [[AVPlayerViewController alloc] init];
+    AVPlayer *player = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:self.topic.videouri]];
+    avC.player = player;
+    
+    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [rootVC presentViewController:avC animated:YES completion:nil];
+    
+}
 @end
