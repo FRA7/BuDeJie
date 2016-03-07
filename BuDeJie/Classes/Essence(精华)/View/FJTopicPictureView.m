@@ -37,7 +37,6 @@
 -(void)setTopic:(FJTopic *)topic{
     _topic = topic;
     
-    [self.imageView fj_setLargeImageImageUrl:topic.image1 smallImageUrl:topic.image0 placeHolder:nil];
     
     //当图片不是动图时隐藏gifView
     self.gifView.hidden = !topic.is_gif;
@@ -46,10 +45,29 @@
         self.seeBigPictureButton.hidden = NO;
         self.imageView.contentMode = UIViewContentModeTop;
         self.imageView.clipsToBounds = YES;
+        
+        //解决长图下载宽度问题
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:topic.image1] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            
+            //目标图片大小
+            CGFloat imageW = FJScreenW - 2 * FJMargin;
+            CGFloat imageH = imageW * topic.height / topic.width;
+            //开启图片上下文
+            UIGraphicsBeginImageContext(CGSizeMake(imageW, imageH));
+            //绘制图片
+            [image drawInRect:CGRectMake(0, 0, imageW, imageH)];
+             
+             self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+            //关闭上下文
+            UIGraphicsEndImageContext();
+        }];
     }else{
         self.seeBigPictureButton.hidden = YES;
         self.imageView.contentMode = UIViewContentModeScaleToFill;
         self.imageView.clipsToBounds = NO;
+        
+        [self.imageView fj_setLargeImageImageUrl:topic.image1 smallImageUrl:topic.image0 placeHolder:nil];
+
     }
     
 }

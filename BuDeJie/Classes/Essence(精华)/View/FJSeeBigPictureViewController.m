@@ -29,12 +29,12 @@
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     [scrollView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(back)]];
     scrollView.frame = [UIScreen mainScreen].bounds;
-    scrollView.backgroundColor = [UIColor redColor];
+    scrollView.backgroundColor = [UIColor blackColor];
     [self.view insertSubview:scrollView atIndex:0];
     
     //UIImageView
     UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.backgroundColor = [UIColor greenColor];
+//    imageView.backgroundColor = [UIColor greenColor];
     CGFloat imageW = FJScreenW;
     CGFloat imageH = imageW * self.topic.height / self.topic.width;
     CGFloat imageY = 0;

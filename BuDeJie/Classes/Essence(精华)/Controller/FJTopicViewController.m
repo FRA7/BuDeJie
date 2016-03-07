@@ -72,7 +72,7 @@ static NSString * const FJTopicCellID = @"FJTopicCellID";
     //设置cell估算高度
     self.tableView.estimatedRowHeight = 160;
     
-    self.tableView.backgroundColor = FJColor(215, 215, 215);
+//    self.tableView.backgroundColor = FJColor(215, 215, 215);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     //设置头部和底部区域
