@@ -22,5 +22,6 @@
 
 -(instancetype)fj_circleImage;
 
+- (void)fj_saveToCustomAlbumWithCompletionHandler:(void(^)(BOOL success, NSError *error))handler;
 
 @end
