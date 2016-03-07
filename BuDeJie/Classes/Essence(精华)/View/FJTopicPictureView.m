@@ -25,7 +25,7 @@
     [self.imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seeBigPicture)]];
 }
 
--(void)seeBigPicture{
+-(IBAction)seeBigPicture{
     
     FJSeeBigPictureViewController *vc = [[FJSeeBigPictureViewController alloc] init];
     vc.topic = self.topic;
