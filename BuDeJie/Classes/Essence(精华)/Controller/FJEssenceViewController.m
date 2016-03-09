@@ -31,7 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.view.backgroundColor = [UIColor greenColor];
+
     [self setUpNavgationItem];
     
     //加载子控制器

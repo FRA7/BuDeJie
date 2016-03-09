@@ -34,7 +34,7 @@
     
     //UIImageView
     UIImageView *imageView = [[UIImageView alloc] init];
-//    imageView.backgroundColor = [UIColor greenColor];
+
     CGFloat imageW = FJScreenW;
     CGFloat imageH = imageW * self.topic.height / self.topic.width;
     CGFloat imageY = 0;
