@@ -205,6 +205,8 @@ static NSString * const FJTopicCellID = @"FJTopicCellID";
         //储存当前maxtime
         self.maxtime = responseObject[@"info"][@"maxtime"];
         
+//        [responseObject writeToFile:@"/Users/francis/Desktop/未命名文件夹/baisi.plist" atomically:YES];
+        
         NSArray *moreTopic = [FJTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
         
         [self.topics addObjectsFromArray:moreTopic];
