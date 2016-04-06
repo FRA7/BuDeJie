@@ -22,17 +22,24 @@
 @property (weak, nonatomic) IBOutlet FJLoginRegisterField *textF;
 
 
+
 @end
 
 @implementation FJLoginRegisterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     //创建注册和登录界面
     FJLoginRegisterView *loginV = [FJLoginRegisterView loginView];
+
+    self.inputView.width = 2 * FJScreenW;
     loginV.width = self.inputView.width * 0.5;
+    FJLog(@"%f",self.inputView.width);
+    FJLog(@"%f",FJScreenW);
+    
     [self.inputView addSubview:loginV];
+    
+    
     
     FJLoginRegisterView *registerV = [FJLoginRegisterView registerView];
     registerV.width = self.inputView.width * 0.5;
@@ -49,6 +56,10 @@
    
 }
 
+-(void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+   
+}
 
 
 //关闭按钮点击
